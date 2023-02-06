@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- ============== 輪播css ============== -->
+  <link rel="stylesheet" href="https://media.etmall.com.tw/sp/12500/swiper.min.css">
+<!-- ============== 共用css ============== -->
+  <link rel="stylesheet" href="https://media.etmall.com.tw/sp/12500/animate.min.css">
+  <link rel="stylesheet" href="https://media.etmall.com.tw/sp/12500/generate_v1.4.1.css">
+
+  <!-- [電梯步驟1] 電梯CSS 不用就關掉 -->
+  <!-- 商品左電梯CSS，要使用還要在步驟2開啟左電梯data資料 -->
+  <!-- <link id="localElevatorLeft" rel="stylesheet" href="sp-elevator-left.css"> -->
+
+  <!-- 商品右電梯CSS，步驟2有測試div可以測試 -->
+  <link id="localElevatorRight" rel="stylesheet" href="sp-elevator-right.css">
+  <!-- [電梯步驟1] 電梯CSS END -->
+
+  <!-- 背景特效區塊的css -->
+  <!-- <link rel="stylesheet" href="./style.css"> -->
+
+  <style>
+
+    body {
+      position: relative;
+    /* 背景顏色 */
+      background-color: #ffe081;
+    }
+
+    body:before {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url(bg-m.jpg) center 0 no-repeat;
+      background-size: 100%;
+    }
+
+    @media screen and (min-width:960px) {
+      body:before {
+        background: url(bg.jpg) center 0 no-repeat;
+        background-size: auto;
+      }
+    }
+
+    body.bg-fixed:before {
+      position: fixed;
+      height: 100vh;
+    }
+
+    /* 調整logo位置大小 */
+    .logo {
+      top: 1%;
+      left: 1%;
+      width: 20%;
+      max-width: 220px;
+    }
+
+      /* 連結測試 */
+      /* .sp__visual a{
+        filter: brightness(500%);
+      } */
+
+      /* 切片測試 */
+      /* .visual__fragment::before {
+        content: '';
+        position: absolute;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        border: 1px solid #00f;
+        pointer-events: none;
+      } */
+
+    /* --- 動畫小物件 --- */
+    .animate__wrap {
+      position: relative;
+      z-index: 1;
+      transform: translateZ(0);
+    }
+
+    /*-- 手機版：設定物件距離左邊與上邊的位置，單位可以使用"%"或"vw";width:建議電腦版可以使用auto，手機版則可使用%調整 --*/
+    .animate__wrap .animate__obj--01 {
+      position: absolute;
+      z-index: -1;
+      top: 48vw;
+      left: 83vw;
+      width: 10%;
+      animation: float 3s ease-in-out infinite;
+    }
+    .animate__wrap .animate__obj--02 {
+      position: absolute;
+      z-index: -1;
+      top: 50vw;
+      left: 8vw;
+      width: 10%;
+      animation: float 3s ease-in-out infinite;animation-delay: 1s;
+    }
+    .animate__wrap .animate__obj--03 {
+      position: absolute;
+      z-index: -1;
+      top: 24vw;
+      left: 53vw;
+      width: 17%;
+    }
+    .animate__wrap .animate__obj--04 {
+      position: absolute;
+      z-index: -1;
+      top: 17vw;
+      left: 69.5vw;
+      width: 17%;
+    }
+    .animate__wrap .animate__obj--05 {
+      position: absolute;
+      z-index: -1;
+      top: 9vw;
+      left: 8.5vw;
+      width: 61%;
+    }
+    .animate__wrap .animate__obj--06 {
+      position: absolute;
+      z-index: -1;
+      top: 23vw;
+      left: 8vw;
+      width: 45%;
+    }
+    
+
+    /*-- 電腦版：設定物件距離左邊與上邊的位置，單位可以使用"px"，左邊可以挑整clac()後面的px值;width:建議電腦版可以使用auto，手機版則可使用%調整 --*/
+    @media screen and (min-width:960px) {
+      .animate__wrap .animate__obj--01 {
+        top: 410px;
+        left: calc(50% - -300px);
+        width: auto;
+        animation: float 3s ease-in-out infinite;
+      }
+    }
+    @media screen and (min-width:960px) {
+      .animate__wrap .animate__obj--02 {
+        top: 450px;
+        left: calc(50% - 400px);
+        width: auto;
+        animation: float 3s ease-in-out infinite;animation-delay: 1s;
+      }
+    }
+    @media screen and (min-width:960px) {
+      .animate__wrap .animate__obj--03 {
+        top: 225px;
+        left: calc(50% - -25px);
+        width: auto;
+        
+      }
+    }
+    @media screen and (min-width:960px) {
+      .animate__wrap .animate__obj--04 {
+        top: 160px;
+        left: calc(50% - -183px);
+        width: auto;
+        
+      }
+    }
+    @media screen and (min-width:960px) {
+      .animate__wrap .animate__obj--05 {
+        top: 82px;
+        left: calc(50% - 420px);
+        width: auto;
+        
+      }
+    }
+    @media screen and (min-width:960px) {
+      .animate__wrap .animate__obj--06 {
+        top: 220px;
+        left: calc(50% - 420px);
+        width: auto;
+        
+      }
+    }
+   
+
+    @keyframes float {
+	0% {
+		transform: translatey(0px);
+        /* opacity:0; */
+	}
+	50% {
+		transform: translatey(-17px);
+        /* opacity:1; */
+	}
+	100% {
+		transform: translatey(0px);
+        /* opacity:0; */
+	}
+  }
+
+
+
+    
+    /* --- 動畫小物件 end --- */
+  </style>
+</head>
+
+<!-- 是否要固定背景，不要就拿掉class -->
+<body class="bg-fixed">
+
+  <div class="navRightBar" id="navRightBar"></div>
+  <div class="elevatorHome js--main--dialog" id="elevatorHome"></div>
+  <div id="barHome"></div>
+  <div class="home--icon layout--main" id="iconHome"></div>
+
+  
+
+  <div class="sp__wallper" id="spWrap">
+    <div class="animate__wrap">
+      <img class="animate__animated animate__obj--01" src="ani_01.png" alt="">
+      <img class="animate__animated animate__obj--02" src="ani_02.png" alt="">
+      <img class="animate__animated animate__obj--03" src="ani_03.png" alt="">
+      <img class="animate__animated animate__obj--04 animate__tada animate__infinite" src="ani_04.png" alt="">
+      <img class="animate__animated animate__obj--05 animate__flipInX " src="ani_05.png" alt="">
+      <img class="animate__animated animate__obj--06 animate__flipInX animate__delay-1s" src="ani_06.png" alt="">
+    
+        
+    </div>
+    <main class="sp__main">
+      <div class="layout--main home--logo">
+        <a href="https://www.etmall.com.tw"><img class="logo" src="ehs-logo.png" alt="東森購物"></a>
+      </div>
+
+      <section class="sp__visual">
+        <div class="layout--main">
+          <ul class="visual--auto clearfix" >
+            <li class="visual__fragment width--auto"><img src="index_01.png" alt=""></li>
+            <li class="visual__fragment width--auto"><img src="index_02.png" alt=""></li>
+            
+          </ul>
+
+       
+
+        </div>
+      </section>
+    </main>
+  
+    
+
+      
+
+      
+
+      
+
+     
+
+
+  </div>
+  <!-- ============== 共用JS ============== -->
+  <script src="https://media.etmall.com.tw/sp/12500/jquery-3.6.0.min.js"></script>
+  <script id="generateScript" src="https://media.etmall.com.tw/sp/12500/generate_v1.4.1.js"></script>
+
+  <!--[電梯步驟2] 電梯 JS -->
+  <!-- 商品左電梯單機版資料，不用就關掉，要使用還要上方步驟1開啟商品左電梯CSS -->
+  <!-- <script id="dataElevatorLeft" src="data-elevator.js"></script> -->
+
+  <!-- 線上自動切換電梯，無論如何都要有 -->
+  <script id="checkElevator" src="https://media.etmall.com.tw/sp/11911/check-elevator.js"></script>
+  <!-- [電梯步驟2] 電梯 JS END -->
+
+  <!-- [測試區] -->
+  <!-- 測試商品右電梯用，上線前必須關掉-->
+  <!-- <div data-title="ccc"></div> -->
+  <!-- 測試霸道電梯用，開啟時上方自動切換電梯要關閉，這支正式上線時需關閉、上方的要開啟回來 -->
+  <!-- <script id="checkElevator" src="https://media.etmall.com.tw/sp/14841/test-elevator.js?87"></script> -->
+
+
+  
+
+  <!-- ============== 輪播 start ============== -->
+  <script src="https://media.etmall.com.tw/sp/12500/swiper.min.js"></script>
+  <script>
+
+  
+  </script>
+  <!-- ============== 輪播 end ============== -->
+
+</body>
+
+</html>
